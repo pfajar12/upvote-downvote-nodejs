@@ -29,29 +29,32 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-8 offset-1">
                 <h3 class="text-center">Topic List</h3>
-                <table class="table table-hover table-striped mt-5">
-                    <thead>
-                        <tr>
-                            <th>Topic</th>
-                            <th width="20%">Total Vote</th>
-                            <th width="30%">Vote</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for data in topics %}
-                        <tr>
-                            <td>{{data.topic}}</td>
-                            <td>{{data.votecount}}</td>
-                            <td>
-                                <button class="btn btn-primary">upvote</button>
-                                <button class="btn btn-danger">downvote</button>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped mt-5">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th width="20%">Total Vote</th>
+                                <th width="30%">Vote</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in topics %}
+                            <tr>
+                                <td>{{data.topic}}</td>
+                                <td>{{data.votecount}}</td>
+                                <td>
+                                    <a href="/upvote/{{data.id}}" class="btn btn-primary">upvote</a>
+                                    <a href="/downvote/{{data.id}}" class="btn btn-danger">downvote</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -18,6 +18,7 @@ class TopicController{
 
     static createData(req, res){
         var newtopic = req.body.newtopic
+        // push to in-memory
         topics.push({
             id : topics.length +1,
             topic : newtopic,
@@ -26,6 +27,13 @@ class TopicController{
         req.flash('success-addtopic', 'Add topic success');
         res.redirect('/');
         res.end();
+    }
+
+    static upvoteData(req, res){
+        let id = req.params.id;
+        let index = id-1;
+        res.end()
+        console.log(topics[index])
     }
 
 }
