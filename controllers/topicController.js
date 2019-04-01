@@ -10,7 +10,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash());
 
 // topics in-memory
-const topics = [];
+const topics = [
+    {topic : 'ini adalah test 1', votecount: 312},
+    {topic : 'ini adalah test 2', votecount: 222}
+];
 
 class TopicController{
 
