@@ -1,21 +1,7 @@
-const express   = require('express');
 var swig        = require('swig-templates');
-var bodyParser  = require('body-parser');
-var flash       = require('@avaly/connect-flash');
-
-
-const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(flash());
 
 // topics in-memory
 const topics = [
-    {topic : 'ini adalah test 2', votecount: 222},
-    {topic : 'ini adalah test 1', votecount: 312},
-    {topic : 'ini adalah test 3', votecount: 111},
-    {topic : 'ini adalah test 4', votecount: 444},
-    {topic : 'ini adalah test 5', votecount: 312},
 ];
 
 class TopicController{
@@ -23,10 +9,23 @@ class TopicController{
     static getAllData(req, res){
         var html = swig.compileFile('templates/index.html');
         var output = html({
-            // sort topics by votecount descending
-            topics  : topics.sort((a, b) => (a.votecount > b.votecount) ? -1 : 1)
+            // sort topics by votecount descending limit 20
+            topics  : topics.sort((a, b) => (a.votecount > b.votecount) ? -1 : 1).slice(0,20),
+            flashmsg_successaddtopic : req.flash('success-addtopic'),
         });
         res.end(output);
+    }
+
+    static createData(req, res){
+        var newtopic = req.body.newtopic
+        topics.push({
+            id : topics.length +1,
+            topic : newtopic,
+            votecount : 0
+        })
+        req.flash('success-addtopic', 'Add topic success');
+        res.redirect('/');
+        res.end();
     }
 
 }

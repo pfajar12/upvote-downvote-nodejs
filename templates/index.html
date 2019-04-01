@@ -7,18 +7,29 @@
 {% block content %}
     <div class="container mt-3">
         <div class="row">
-            <div class="col-4 mt-3">
+            <div class="col-3 mt-3">
                 <h5>Add New Topic</h5>
-                <form method="post" action="">
+                <form method="post" action="" id="form-add-topic">
                     <div class="form-group">
                         <label for="topic">Topic</label>
-                        <textarea id="topic" class="form-control" rows="3" style="resize:none"></textarea>
+                        <textarea id="topic" class="form-control" rows="3" name="newtopic" style="resize:none"></textarea>
                         <small class="text-danger font-weight-bold">*max 255 characters</small>
                     </div>
-                    <button class="btn btn-success form-control">Save</button>
+                    <button type="button" class="btn btn-success form-control" onclick="checkform()">Save</button>
                 </form>
+
+                <!-- flash message -->
+                <div class="row">
+                    <div class="col-12 text-center mt-3">
+                        {% if flashmsg_successaddtopic.length > 0 %}
+                        <div class="alert alert-success" role="alert">
+                            {{flashmsg_successaddtopic}}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <div class="col-8">
+            <div class="col-8 offset-1">
                 <h3 class="text-center">Topic List</h3>
                 <table class="table table-hover table-striped mt-5">
                     <thead>
@@ -44,4 +55,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function checkform() {
+            var newtopic = $('#topic').val();
+            if(newtopic==''){
+                alert('topic must not empty')
+            }
+            else{
+                $('#form-add-topic').submit();
+            }
+        }
+    </script>
 {% endblock %}
