@@ -1,0 +1,25 @@
+{
+  "name": "upvote-downvote-nodejs",
+  "version": "1.0.0",
+  "description": "this is chalenge test for upvote downvote",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfajar12/upvote-downvote-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pfajar12/upvote-downvote-nodejs/issues"
+  },
+  "homepage": "https://github.com/pfajar12/upvote-downvote-nodejs#readme",
+  "dependencies": {
+    "@avaly/connect-flash": "^1.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "swig-templates": "^2.0.3"
+  }
+}
