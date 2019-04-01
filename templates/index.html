@@ -5,5 +5,49 @@
 {% endblock %}
 
 {% block content %}
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <h5>Add New Topic</h5>
+                <form method="post" action="">
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <textarea id="topic" class="form-control" rows="3" style="resize:none"></textarea>
+                        <small class="text-danger font-weight-bold">*max 255 characters</small>
+                    </div>
+                    <button class="btn btn-success form-control">Save</button>
+                </form>
+            </div>
+            <div class="col-8">
+                <h3>Topic List</h3>
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Topic</th>
+                            <th width="30%">Vote</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>test 123 ini adalah test</td>
+                            <td>
+                                <button class="btn btn-primary">upvote</button>
+                                <button class="btn btn-danger">downvote</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>test 123 ini adalah test</td>
+                            <td>
+                                <button class="btn btn-primary">upvote</button>
+                                <button class="btn btn-danger">downvote</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}

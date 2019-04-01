@@ -4,8 +4,7 @@ var bodyParser  = require('body-parser');
 var flash       = require('@avaly/connect-flash');
 
 
-const app       = express();
-app.use(express.static('assets'));
+const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash());

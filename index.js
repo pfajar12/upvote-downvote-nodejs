@@ -3,6 +3,8 @@ var routes      = require('./routes/index');
 var swig        = require('swig-templates');
 const app       = express();
 
+app.use(express.static('assets'));
+
 app.use('/', routes);
 
 app.get('*', (req, res) => {
