@@ -22,8 +22,11 @@
                 <div class="row">
                     <div class="col-12 text-center mt-3">
                         {% if flashmsg_successaddtopic.length > 0 %}
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{flashmsg_successaddtopic}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         {% endif %}
                     </div>
@@ -54,6 +57,29 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                </div>
+
+                <!-- flash message -->
+                <div class="row">
+                    <div class="col-12 text-center mt-3">
+                        {% if flashmsg_successupvote.length > 0 %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{flashmsg_successupvote}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+
+                        {% if flashmsg_successdownvote.length > 0 %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{flashmsg_successdownvote}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

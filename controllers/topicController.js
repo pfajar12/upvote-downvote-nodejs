@@ -12,6 +12,8 @@ class TopicController{
             // sort topics by votecount descending limit 20
             topics  : topics.sort((a, b) => (a.votecount > b.votecount) ? -1 : 1).slice(0,20),
             flashmsg_successaddtopic : req.flash('success-addtopic'),
+            flashmsg_successupvote : req.flash('success-upvote'),
+            flashmsg_successdownvote : req.flash('success-downvote'),
         });
         res.end(output);
     }
@@ -31,9 +33,22 @@ class TopicController{
 
     static upvoteData(req, res){
         let id = req.params.id;
-        let index = id-1;
-        res.end()
-        console.log(topics[index])
+        // get array index of choosen data
+        let index = topics.findIndex(x=> x.id==id);
+        // add vote += 1
+        topics[index].votecount +=1;
+        req.flash('success-upvote', 'Upvote success');
+        res.redirect('/');
+    }
+
+    static downvoteData(req, res){
+        let id = req.params.id;
+        // get array index of choosen data
+        let index = topics.findIndex(x=> x.id==id);
+        // add vote += 1
+        topics[index].votecount -=1;
+        req.flash('success-downvote', 'Downvote success');
+        res.redirect('/');
     }
 
 }
