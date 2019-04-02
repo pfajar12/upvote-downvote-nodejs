@@ -2,6 +2,7 @@ var swig        = require('swig-templates');
 
 // topics in-memory
 const topics = [
+    {id: 1, topic: "test for mocha", votecount: 0}
 ];
 
 class TopicController{
@@ -9,8 +10,7 @@ class TopicController{
     static getAllData(req, res){
         var html = swig.compileFile('templates/index.html');
         var output = html({
-            // sort topics by votecount descending limit 20
-            topics  : topics.sort((a, b) => (a.votecount > b.votecount) ? -1 : 1).slice(0,20),
+            topics  : TopicController.methodGetAllData(),
             flashmsg_successaddtopic : req.flash('success-addtopic'),
             flashmsg_successupvote : req.flash('success-upvote'),
             flashmsg_successdownvote : req.flash('success-downvote'),
@@ -20,12 +20,7 @@ class TopicController{
 
     static createData(req, res){
         var newtopic = req.body.newtopic
-        // push to in-memory
-        topics.push({
-            id : topics.length +1,
-            topic : newtopic,
-            votecount : 0
-        })
+        TopicController.methodCreateData(newtopic);
         req.flash('success-addtopic', 'Add topic success');
         res.redirect('/');
         res.end();
@@ -51,6 +46,25 @@ class TopicController{
         res.redirect('/');
     }
 
+    static methodGetAllData(){
+        // sort topics by votecount descending limit 20
+        return topics.sort((a, b) => (a.votecount > b.votecount) ? -1 : 1).slice(0,20);
+    }
+
+    static methodCreateData(newtopic){
+        // push to in-memory
+        topics.push({
+            id : topics.length +1,
+            topic : newtopic,
+            votecount : 0
+        })
+
+        return topics.length;
+    }
+
+    // static methodUpVote(){
+    //     topics
+    // }
 }
 
 module.exports = TopicController;

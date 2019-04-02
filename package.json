@@ -4,7 +4,7 @@
   "description": "this is chalenge test for upvote downvote",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node index.js"
   },
   "repository": {
@@ -20,8 +20,11 @@
   "dependencies": {
     "@avaly/connect-flash": "^1.0.0",
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "mocha": "^6.0.2",
     "swig-templates": "^2.0.3"
   }
 }
