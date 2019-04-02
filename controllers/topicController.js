@@ -1,9 +1,7 @@
 var swig        = require('swig-templates');
 
 // topics in-memory
-const topics = [
-    {id: 1, topic: "test for mocha", votecount: 0}
-];
+const topics = [];
 
 class TopicController{
 
@@ -30,8 +28,7 @@ class TopicController{
         let id = req.params.id;
         // get array index of choosen data
         let index = topics.findIndex(x=> x.id==id);
-        // add vote += 1
-        topics[index].votecount +=1;
+        TopicController.methodUpVote(index);
         req.flash('success-upvote', 'Upvote success');
         res.redirect('/');
     }
@@ -40,8 +37,7 @@ class TopicController{
         let id = req.params.id;
         // get array index of choosen data
         let index = topics.findIndex(x=> x.id==id);
-        // add vote += 1
-        topics[index].votecount -=1;
+        TopicController.methodDownVote(index);
         req.flash('success-downvote', 'Downvote success');
         res.redirect('/');
     }
@@ -62,9 +58,21 @@ class TopicController{
         return topics.length;
     }
 
-    // static methodUpVote(){
-    //     topics
-    // }
+    static methodDownVote(index){
+        var prevVoteCount = topics[index].votecount;
+        var currentVoteCount = prevVoteCount-1;
+        // minus 1 to vote
+        topics[index].votecount -=1;
+        return currentVoteCount < prevVoteCount;
+    }
+
+    static methodUpVote(index){
+        var prevVoteCount = topics[index].votecount;
+        var currentVoteCount = prevVoteCount+1;
+        // plus 1 to vote
+        topics[index].votecount +=1;
+        return currentVoteCount > prevVoteCount;
+    }
 }
 
 module.exports = TopicController;
