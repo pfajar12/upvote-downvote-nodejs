@@ -6,3 +6,6 @@ how to run this application:
 - type npm install command in the terminal to install all of dependancy of this project
 - type npm start in command prompt/terminal to run the project
 - type npm test in command prompt/terminal to run the test
+
+
+check online version here https://pfajar-upvote-downvote.herokuapp.com/
