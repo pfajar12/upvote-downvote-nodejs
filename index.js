@@ -5,6 +5,10 @@ var bodyParser  = require('body-parser');
 var session     = require('express-session');
 var flash       = require('@avaly/connect-flash');
 const app       = express();
+let port        = process.env.PORT;
+if(port == null || port == ""){
+    port = 8000;
+}
 
 app.use(express.static('assets'));
 app.use(bodyParser.json());
@@ -20,6 +24,6 @@ app.get('*', (req, res) => {
     res.end(output);
 });
 
-app.listen(8888, () => {
-    console.log(`Server started on port 8888`);
+app.listen(port, () => {
+    console.log(`Server started on port `+port);
 });
